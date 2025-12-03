@@ -20,24 +20,39 @@ namespace WinFormsApp
             dataGridView1.DataSource = _bindingSource;
 
             txtSearch.TextChanged += TxtSearch_TextChanged;
+            txtDescSearch.TextChanged += TxtDescSearch_TextChanged;
         }
 
         private void TxtSearch_TextChanged(object? sender, EventArgs e)
         {
-            var term = txtSearch.Text.Trim();
-            if (string.IsNullOrEmpty(term))
+            ApplyFilters();
+        }
+
+        private void TxtDescSearch_TextChanged(object? sender, EventArgs e)
+        {
+            ApplyFilters();
+        }
+
+        private void ApplyFilters()
+        {
+            var general = txtSearch.Text.Trim();
+            var desc = txtDescSearch.Text.Trim();
+
+            var items = _repository.GetTransactions();
+
+            if (!string.IsNullOrEmpty(desc))
             {
-                _bindingSource.DataSource = _repository.GetTransactions().ToList();
-                return;
+                items = items.Where(t => t.Description.Contains(desc, StringComparison.OrdinalIgnoreCase));
             }
 
-            var filtered = _repository.GetTransactions()
-                .Where(t => t.Description.Contains(term, StringComparison.OrdinalIgnoreCase)
-                            || t.Date.ToString("d").Contains(term, StringComparison.OrdinalIgnoreCase)
-                            || t.Amount.ToString().Contains(term))
-                .ToList();
+            if (!string.IsNullOrEmpty(general))
+            {
+                items = items.Where(t => t.Description.Contains(general, StringComparison.OrdinalIgnoreCase)
+                                         || t.Date.ToString("d").Contains(general, StringComparison.OrdinalIgnoreCase)
+                                         || t.Amount.ToString().Contains(general));
+            }
 
-            _bindingSource.DataSource = filtered;
+            _bindingSource.DataSource = items.ToList();
         }
     }
 }
