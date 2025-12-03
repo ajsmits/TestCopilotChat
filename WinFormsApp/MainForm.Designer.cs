@@ -6,6 +6,8 @@ namespace WinFormsApp
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label lblSearch;
+        private System.Windows.Forms.Label lblDescSearch;
+        private System.Windows.Forms.TextBox txtDescSearch;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem backgroundColorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem colorLightBlueToolStripMenuItem;
@@ -36,6 +38,8 @@ namespace WinFormsApp
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
+            this.lblDescSearch = new System.Windows.Forms.Label();
+            this.txtDescSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,8 +120,25 @@ namespace WinFormsApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Location = new System.Drawing.Point(62, 36);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(710, 23);
+            this.txtSearch.Size = new System.Drawing.Size(520, 23);
             this.txtSearch.TabIndex = 1;
+            // 
+            // lblDescSearch
+            // 
+            this.lblDescSearch.AutoSize = true;
+            this.lblDescSearch.Location = new System.Drawing.Point(588, 39);
+            this.lblDescSearch.Name = "lblDescSearch";
+            this.lblDescSearch.Size = new System.Drawing.Size(60, 15);
+            this.lblDescSearch.TabIndex = 4;
+            this.lblDescSearch.Text = "Description";
+            // 
+            // txtDescSearch
+            // 
+            this.txtDescSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDescSearch.Location = new System.Drawing.Point(654, 36);
+            this.txtDescSearch.Name = "txtDescSearch";
+            this.txtDescSearch.Size = new System.Drawing.Size(118, 23);
+            this.txtDescSearch.TabIndex = 5;
             // 
             // dataGridView1
             // 
@@ -137,6 +158,8 @@ namespace WinFormsApp
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.lblSearch);
+            this.Controls.Add(this.lblDescSearch);
+            this.Controls.Add(this.txtDescSearch);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Transactions";
