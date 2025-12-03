@@ -6,4 +6,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <ItemGroup>
+    <!-- Ensure MainForm.resx has an explicit logical name to avoid conflicts -->
+    <EmbeddedResource Update="MainForm.resx">
+      <LogicalName>$(AssemblyName).MainForm.resources</LogicalName>
+    </EmbeddedResource>
+    <!-- Do not embed the auxiliary .resx created for the color menu to avoid duplicate resource name -->
+    <EmbeddedResource Remove="MainForm.ColorMenu.resx" />
+    <None Include="MainForm.ColorMenu.resx" />
+  </ItemGroup>
 </Project>
